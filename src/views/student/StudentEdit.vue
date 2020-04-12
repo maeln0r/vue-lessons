@@ -1,25 +1,24 @@
 <template>
-    <div>
-        <el-form ref="form" :model="student" label-width="120px">
-            <el-form-item label="Фамилия" prop="surname"
-                          :rules="[{ required: true, message: 'Где фамилия?', trigger: 'blur' }]">
-                <el-input v-model="student.surname"></el-input>
-            </el-form-item>
-            <el-form-item label="Имя" prop="name"
-                          :rules="[{ required: true, message: 'Где имя?', trigger: 'blur' }]">
-                <el-input v-model="student.name"></el-input>
-            </el-form-item>
-            <el-form-item label="Отчество" prop="middleName"
-                          :rules="[{ required: true, message: 'Где отчество?', trigger: 'blur' }]">
-                <el-input v-model="student.middleName"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="danger" v-if="student.id > 0" @click="onRemove">Удалить</el-button>
-                <el-button @click="$router.back()" style="float: right">Отменить</el-button>
-                <el-button type="primary" @click="onSubmit" style="float: right">Сохранить</el-button>
-            </el-form-item>
-        </el-form>
-    </div>
+    <el-form ref="form" :model="student" label-width="120px">
+        <el-form-item label="Фамилия" prop="surname"
+                      :rules="[{ required: true, message: 'Где фамилия?', trigger: 'blur' }]">
+            <el-input v-model="student.surname"></el-input>
+        </el-form-item>
+        <el-form-item label="Имя" prop="name"
+                      :rules="[{ required: true, message: 'Где имя?', trigger: 'blur' }]">
+            <el-input v-model="student.name"></el-input>
+        </el-form-item>
+        <el-form-item label="Отчество" prop="middleName"
+                      :rules="[{ required: true, message: 'Где отчество?', trigger: 'blur' }]">
+            <el-input v-model="student.middleName"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="danger" v-if="student.id > 0" @click="onRemove">Удалить</el-button>
+            <el-button type="primary" @click="onSubmit" style="float: right; margin-left: 10px;">Сохранить
+            </el-button>
+            <el-button @click="$router.back()" style="float: right">Отменить</el-button>
+        </el-form-item>
+    </el-form>
 </template>
 
 <script>

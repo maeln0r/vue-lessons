@@ -1,15 +1,33 @@
+import Vue from 'vue'
+
 export default {
-    state: {
-        courses: []
-    },
+    state: {},
     mutations: {
-        set_courses: (state, payload) => {
-            state.courses = payload;
+        add_course: (state, payload) => {
+            let id = payload.id;
+            if (id === 0) {
+                id = Object.keys(state).length + 1
+            }
+            payload['id'] = id;
+            Vue.set(state, id, payload);
+            Vue.set(state[id], 'studentSelect', [])
         },
-        add_courses: (state, payload) => {
-            state.courses.push(payload);
+        remove_course: (state, payload) => {
+            let id = payload.id;
+            Vue.set(state, id, null)
         }
     },
-    actions: {},
-    getters: {},
+    actions: {
+        add_course: (context, item) => {
+            context.commit('add_course', item)
+        },
+        remove_course: (context, item) => {
+            context.commit('remove_course', item)
+        }
+    },
+    getters: {
+        get_course: state => {
+            return state
+        }
+    }
 };

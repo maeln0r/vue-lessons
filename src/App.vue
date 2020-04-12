@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header>
+    <el-header>
       <ul>
         <li>
           <router-link :to="{name: 'course_default'}">Курсы</router-link>
@@ -9,11 +9,11 @@
           <router-link :to="{name: 'student_default'}">Студенты</router-link>
         </li>
       </ul>
-    </header>
-    <main>
+    </el-header>
+    <el-main>
       <h1>{{ $route.meta.title }}</h1>
       <router-view/>
-    </main>
+    </el-main>
   </div>
 </template>
 

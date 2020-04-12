@@ -3,7 +3,7 @@
         <el-button type="primary" style="float: right;" @click="$router.push({ name: 'student_add'})">Добавить
             студента
         </el-button>
-        <el-table v-if="tableData.length > 0" :data="tableData" style="width: 100%" row-key="id">
+        <el-table v-if="tableData.length > 0" :data="tableData" style="width: 100%">
             <el-table-column prop="id" label="ID" width="70px"></el-table-column>
             <el-table-column prop="surname" label="Фамилия"></el-table-column>
             <el-table-column prop="name" label="Имя"></el-table-column>
@@ -37,7 +37,7 @@
             },
             removeStudent(id, data) {
                 this.$store.dispatch('remove_student', data[id]);
-                console.log(this.$store.getters.get_students)
+                this.getStudents()
             },
             getStudents(){
                 this.tableData = Object.values(this.$store.getters.get_students).filter((value) => value !== null);
