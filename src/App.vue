@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <ul>
+        <li>
+          <router-link :to="{name: 'course_default'}">Курсы</router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'student_default'}">Студенты</router-link>
+        </li>
+      </ul>
+    </header>
+    <main>
+      <h1>{{ $route.meta.title }}</h1>
+      <router-view/>
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    beforeCreate() {
+      this.$store.commit('initStore');
+    }
   }
-}
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
