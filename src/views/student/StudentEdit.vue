@@ -42,16 +42,7 @@
             onSubmit() {
                 this.$refs['form'].validate((valid) => {
                     if (valid) {
-                        if (this.student.id > 0) {
-                            this.$store.dispatch('edit_student', this.student);
-                        } else {
-                            let newID = 1;
-                            if (this.$store.getters.get_students.length) {
-                                newID = Math.max.apply(null, Object.keys(this.$store.getters.get_students)) + 1;
-                            }
-                            this.student.id = newID;
-                            this.$store.dispatch('add_student', this.student);
-                        }
+                        this.$store.dispatch('add_student', this.student);
                         this.$router.back()
                     } else {
                         return false;

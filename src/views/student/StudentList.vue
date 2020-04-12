@@ -37,10 +37,14 @@
             },
             removeStudent(id, data) {
                 this.$store.dispatch('remove_student', data[id]);
+                console.log(this.$store.getters.get_students)
+            },
+            getStudents(){
+                this.tableData = Object.values(this.$store.getters.get_students).filter((value) => value !== null);
             }
         },
         created() {
-            this.tableData = Object.values(this.$store.getters.get_students).filter((value) => value !== null);
+            this.getStudents()
         }
     }
 </script>
